@@ -7,7 +7,7 @@ import mdx from '@astrojs/mdx';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://astro-frontend-masters.netlify.app',
+	site: 'https://main--cerulean-kitsune-e3b8f7.netlify.app/',
 	output: 'server',
 	integrations: [solidJs(), react(), mdx()],
 	adapter: netlify(),
