@@ -1,13 +1,19 @@
 ---
 import Layout from '../layouts/page.astro';
+import img404 from '../assets/404.avif';
+import { Image } from 'astro:assets';
 ---
 
 <Layout>
 	<div class="not-found">
 		<h1>Page not found (404)</h1>
-		<img
-			src="https://images.unsplash.com/photo-1531928351158-2f736078e0a1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80"
+		<Image
+			src={img404}
 			alt="an empty plate with a frowny face drawn on it"
+			format="avif"
+			width={img404.width}
+			height={img404.height}
+			class="not-found-img"
 		/>
 		<p>Looks like the page you requested doesn’t exist.</p>
 		<p><a href="/">&larr; back home</a></p>
@@ -17,17 +23,23 @@ import Layout from '../layouts/page.astro';
 <style>
 	.not-found {
 		margin: 0 auto;
-		max-width: 500px;
+		max-width: 640px;
 		text-align: center;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
 	}
 
 	.not-found h1 {
 		font-size: 2rem;
 	}
 
-	.not-found img {
+	.not-found-img {
 		display: block;
-		margin: 1rem 0 0;
-		width: 100%;
+		margin-block: 1rem;
+		object-fit: contain;
+		max-width: 100%;
+		aspect-ratio: 16/9;
 	}
 </style>
