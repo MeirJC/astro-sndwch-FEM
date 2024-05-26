@@ -1,28 +1,24 @@
 ---
-import Layout from '../layouts/default.astro';
+import Layout from '../layouts/shop.astro';
 import ShopItems from '../components/shop-items.astro';
 import { Cart } from '../components/cart';
+
+export const prerender = true;
 ---
 
 <Layout>
-	<div class="shop">
-		<h1>Shop Sandwich Kits</h1>
-		<noscript>
+	<h1>Shop Sandwich Kits</h1>
+	<noscript>
 			<p>JavaScript is required to view this content.</p>
-		</noscript>
-		<div class="products">
-			<ShopItems />
-			<Cart client:only="solid-js" />
-		</div>
+	</noscript>
+	<div class="wrapper">
+		<ShopItems />
+		<Cart client:only="solid-js" />
 	</div>
 </Layout>
 
 <style>
-	.shop {
-		padding: 3rem 5%;
-	}
-
-	.products {
+	.wrapper {
 		align-items: flex-start;
 		display: grid;
 		gap: 2rem;

@@ -1,13 +1,14 @@
 import { useStore } from '@nanostores/solid';
-import { $cart as cart, removeItemFromCart, subtotal } from '../stores/cart';
-import { Show, createSignal } from 'solid-js';
+import { cart, removeItemFromCart, subtotal } from '../stores/cart';
 import styles from './cart.module.css';
+import { Show, createSignal } from 'solid-js';
+import type { CartStore } from '../types';
 
-function formatCurrency(amony: number) {
+function formatCurrency(amount: number) {
 	return new Intl.NumberFormat('en-US', {
-		style: 'currency',
 		currency: 'USD',
-	}).format(amony);
+		style: 'currency',
+	}).format(amount);
 }
 
 const EmptyState = () => {
@@ -39,7 +40,7 @@ export const Cart = () => {
 			<h2>Your Cart</h2>
 			<Show when={Object.values($cart()).length > 0} fallback={<EmptyState />}>
 				<ul class={styles.items}>
-					{Object.values($cart()).map((entry: CartItem) => {
+					{Object.values($cart()).map((entry: CartStore) => {
 						if (!entry) {
 							return null;
 						}

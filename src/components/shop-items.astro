@@ -1,14 +1,14 @@
 ---
 import { AddToCart } from '../components/add-to-cart';
-function formatCurrency(amony: number) {
+function formatCurrency(amount: number) {
 	return new Intl.NumberFormat('en-US', {
-		style: 'currency',
 		currency: 'USD',
-	}).format(amony);
+		style: 'currency',
+	}).format(amount);
 }
 
 const result = await fetch(
-	'https://astro-frontend-masters-api.netlify.app/api/products'
+	'https://astro-frontend-masters-api.netlify.app/api/products',
 );
 
 if (!result.ok) {
@@ -34,7 +34,7 @@ const { count = Infinity, addToCart = true } = Astro.props;
 					<h2>{item.title}</h2>
 					<p>{item.description}</p>
 					<p class="price">{formatCurrency(item.price)}</p>
-					{addToCart ? <AddToCart item={item} client:load /> : null}
+					{addToCart ? <AddToCart item={item} client:only="react" /> : null}
 				</div>
 			);
 		})

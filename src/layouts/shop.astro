@@ -3,7 +3,13 @@ import Layout from '../layouts/default.astro';
 ---
 
 <Layout>
-	<section class="block page">
+	<div class="shop">
 		<slot />
-	</section>
+	</div>
 </Layout>
+
+<style>
+	.shop {
+		padding: 3rem 5%;
+	}
+</style>
