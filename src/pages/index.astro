@@ -39,6 +39,7 @@ export const prerender = true;
 			width={newsletterImage.width}
 			height={newsletterImage.height}
 			loading="lazy"
+			class="newsletter-img"
 		/>
 		<div class="copy">
 			<h3>Prefer your sandwiches to go?</h3>
@@ -106,9 +107,11 @@ export const prerender = true;
 		margin: 0;
 	}
 
-	.newsletter img {
+	.newsletter-img {
 		aspect-ratio: 1;
 		width: min(30%, 250px);
+		max-width: 250px;
+		max-height: 250px;
 	}
 
 	@media (min-width: 450px) {
